@@ -1,0 +1,147 @@
+#include <stdio.h>
+#include <string.h>
+
+struct Patient {
+    int patientID;
+    char name[50];
+    int age;
+    char disease[50];
+    char doctor[50];
+};
+
+int main() {
+    struct Patient p[100];
+    int n = 0;
+    int choice, i, searchID, found;
+
+    while(1) {
+        printf("\n--- Hospital Management System ---\n");
+        printf("1. Add Patient\n");
+        printf("2. Display All Patients\n");
+        printf("3. Search Patient\n");
+        printf("4. Update Patient\n");
+        printf("5. Delete Patient\n");
+        printf("6. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch(choice) {
+
+        case 1:
+            printf("\nEnter Patient ID: ");
+            scanf("%d", &p[n].patientID);
+
+            printf("Enter Name: ");
+            scanf(" %[^\n]", p[n].name);
+
+            printf("Enter Age: ");
+            scanf("%d", &p[n].age);
+
+            printf("Enter Disease/Diagnosis: ");
+            scanf(" %[^\n]", p[n].disease);
+
+            printf("Enter Doctor Assigned: ");
+            scanf(" %[^\n]", p[n].doctor);
+
+            n++;
+            printf("Patient Added Successfully!\n");
+            break;
+
+        case 2:
+            if(n == 0) {
+                printf("No patient records found.\n");
+            } else {
+                for(i = 0; i < n; i++) {
+                    printf("\nPatient %d Details:\n", i + 1);
+                    printf("ID: %d\n", p[i].patientID);
+                    printf("Name: %s\n", p[i].name);
+                    printf("Age: %d\n", p[i].age);
+                    printf("Disease: %s\n", p[i].disease);
+                    printf("Doctor: %s\n", p[i].doctor);
+                }
+            }
+            break;
+
+        case 3:
+            printf("Enter Patient ID to search: ");
+            scanf("%d", &searchID);
+            found = 0;
+
+            for(i = 0; i < n; i++) {
+                if(p[i].patientID == searchID) {
+                    printf("\nPatient Found:\n");
+                    printf("ID: %d\n", p[i].patientID);
+                    printf("Name: %s\n", p[i].name);
+                    printf("Age: %d\n", p[i].age);
+                    printf("Disease: %s\n", p[i].disease);
+                    printf("Doctor: %s\n", p[i].doctor);
+                    found = 1;
+                    break;
+                }
+            }
+
+            if(found == 0)
+                printf("Patient not found.\n");
+            break;
+
+        case 4:
+            printf("Enter Patient ID to update: ");
+            scanf("%d", &searchID);
+            found = 0;
+
+            for(i = 0; i < n; i++) {
+                if(p[i].patientID == searchID) {
+                    printf("Enter New Name: ");
+                    scanf(" %[^\n]", p[i].name);
+
+                    printf("Enter New Age: ");
+                    scanf("%d", &p[i].age);
+
+                    printf("Enter New Disease: ");
+                    scanf(" %[^\n]", p[i].disease);
+
+                    printf("Enter New Doctor: ");
+                    scanf(" %[^\n]", p[i].doctor);
+
+                    printf("Record Updated Successfully!\n");
+                    found = 1;
+                    break;
+                }
+            }
+
+            if(found == 0)
+                printf("Patient not found.\n");
+            break;
+
+        case 5:
+            printf("Enter Patient ID to delete: ");
+            scanf("%d", &searchID);
+            found = 0;
+
+            for(i = 0; i < n; i++) {
+                if(p[i].patientID == searchID) {
+                    for(int j = i; j < n-1; j++) {
+                        p[j] = p[j+1];
+                    }
+                    n--;
+                    printf("Record Deleted Successfully!\n");
+                    found = 1;
+                    break;
+                }
+            }
+
+            if(found == 0)
+                printf("Patient not found.\n");
+            break;
+
+        case 6:
+            printf("Exiting Program...\n");
+            return 0;
+
+        default:
+            printf("Invalid choice. Try again.\n");
+        }
+    }
+
+    return 0;
+}
