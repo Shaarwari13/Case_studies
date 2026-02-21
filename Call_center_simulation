@@ -1,0 +1,106 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX 100
+
+struct Call {
+    int callID;
+    char callerName[50];
+    char issue[100];
+};
+
+struct Call queue[MAX];
+
+int front = -1;
+int rear = -1;
+
+// Enqueue (Receive New Call)
+void enqueue() {
+    if(rear == MAX - 1) {
+        printf("Queue Overflow! No more calls can be added.\n");
+        return;
+    }
+
+    if(front == -1)
+        front = 0;
+
+    rear++;
+
+    printf("Enter Call ID: ");
+    scanf("%d", &queue[rear].callID);
+
+    printf("Enter Caller Name: ");
+    scanf(" %[^\n]", queue[rear].callerName);
+
+    printf("Enter Issue Description: ");
+    scanf(" %[^\n]", queue[rear].issue);
+
+    printf("Call added to waiting queue successfully!\n");
+}
+
+// Dequeue (Attend Call)
+void dequeue() {
+    if(front == -1 || front > rear) {
+        printf("Queue Underflow! No calls to attend.\n");
+        return;
+    }
+
+    printf("\nAttending Call:\n");
+    printf("Call ID: %d\n", queue[front].callID);
+    printf("Caller Name: %s\n", queue[front].callerName);
+    printf("Issue: %s\n", queue[front].issue);
+
+    front++;
+
+    if(front > rear) {
+        front = rear = -1;  // Reset queue when empty
+    }
+}
+
+// Display Waiting Calls
+void display() {
+    if(front == -1) {
+        printf("No calls in waiting queue.\n");
+        return;
+    }
+
+    printf("\nWaiting Calls:\n");
+    for(int i = front; i <= rear; i++) {
+        printf("\nCall ID: %d\n", queue[i].callID);
+        printf("Caller Name: %s\n", queue[i].callerName);
+        printf("Issue: %s\n", queue[i].issue);
+    }
+}
+
+int main() {
+    int choice;
+
+    while(1) {
+        printf("\n--- Call Center System ---\n");
+        printf("1. Receive New Call (Enqueue)\n");
+        printf("2. Attend Call (Dequeue)\n");
+        printf("3. Display Waiting Calls\n");
+        printf("4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch(choice) {
+            case 1:
+                enqueue();
+                break;
+            case 2:
+                dequeue();
+                break;
+            case 3:
+                display();
+                break;
+            case 4:
+                printf("Exiting Program...\n");
+                return 0;
+            default:
+                printf("Invalid choice!\n");
+        }
+    }
+
+    return 0;
+}
