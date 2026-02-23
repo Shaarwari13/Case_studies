@@ -1,0 +1,134 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct Student {
+    int roll;
+    char name[50];
+    float marks;
+    struct Student* next;
+};
+
+struct Student* head = NULL;
+
+// Insert Student
+void insert() {
+    struct Student* newNode = (struct Student*)malloc(sizeof(struct Student));
+
+    printf("Enter Roll Number: ");
+    scanf("%d", &newNode->roll);
+
+    printf("Enter Name: ");
+    scanf(" %[^\n]", newNode->name);
+
+    printf("Enter Marks: ");
+    scanf("%f", &newNode->marks);
+
+    newNode->next = NULL;
+
+    if(head == NULL) {
+        head = newNode;
+    } else {
+        struct Student* temp = head;
+        while(temp->next != NULL)
+            temp = temp->next;
+        temp->next = newNode;
+    }
+
+    printf("Student inserted successfully!\n");
+}
+
+// Display Students
+void display() {
+    if(head == NULL) {
+        printf("No records found.\n");
+        return;
+    }
+
+    struct Student* temp = head;
+    while(temp != NULL) {
+        printf("\nRoll: %d\n", temp->roll);
+        printf("Name: %s\n", temp->name);
+        printf("Marks: %.2f\n", temp->marks);
+        temp = temp->next;
+    }
+}
+
+// Search Student
+void search() {
+    int roll;
+    printf("Enter Roll Number to search: ");
+    scanf("%d", &roll);
+
+    struct Student* temp = head;
+
+    while(temp != NULL) {
+        if(temp->roll == roll) {
+            printf("\nStudent Found:\n");
+            printf("Roll: %d\n", temp->roll);
+            printf("Name: %s\n", temp->name);
+            printf("Marks: %.2f\n", temp->marks);
+            return;
+        }
+        temp = temp->next;
+    }
+
+    printf("Student not found.\n");
+}
+
+// Delete Student
+void delete() {
+    int roll;
+    printf("Enter Roll Number to delete: ");
+    scanf("%d", &roll);
+
+    struct Student *temp = head, *prev = NULL;
+
+    if(temp != NULL && temp->roll == roll) {
+        head = temp->next;
+        free(temp);
+        printf("Student deleted successfully!\n");
+        return;
+    }
+
+    while(temp != NULL && temp->roll != roll) {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    if(temp == NULL) {
+        printf("Student not found.\n");
+        return;
+    }
+
+    prev->next = temp->next;
+    free(temp);
+
+    printf("Student deleted successfully!\n");
+}
+
+int main() {
+    int choice;
+
+    while(1) {
+        printf("\n--- Student Management (Singly Linked List) ---\n");
+        printf("1. Insert Student\n");
+        printf("2. Display Students\n");
+        printf("3. Search Student\n");
+        printf("4. Delete Student\n");
+        printf("5. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch(choice) {
+            case 1: insert(); break;
+            case 2: display(); break;
+            case 3: search(); break;
+            case 4: delete(); break;
+            case 5: return 0;
+            default: printf("Invalid choice!\n");
+        }
+    }
+
+    return 0;
+}
