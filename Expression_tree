@@ -1,0 +1,83 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+
+struct Node {
+    char data;
+    struct Node* left;
+    struct Node* right;
+};
+
+// Stack for tree nodes
+struct Node* stack[100];
+int top = -1;
+
+void push(struct Node* node) {
+    stack[++top] = node;
+}
+
+struct Node* pop() {
+    return stack[top--];
+}
+
+// Create new node
+struct Node* createNode(char data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->left = newNode->right = NULL;
+    return newNode;
+}
+
+// Evaluate expression tree
+int evaluate(struct Node* root) {
+    if(root == NULL)
+        return 0;
+
+    // If leaf node (operand)
+    if(root->left == NULL && root->right == NULL)
+        return root->data - '0';
+
+    int leftVal = evaluate(root->left);
+    int rightVal = evaluate(root->right);
+
+    switch(root->data) {
+        case '+': return leftVal + rightVal;
+        case '-': return leftVal - rightVal;
+        case '*': return leftVal * rightVal;
+        case '/': return leftVal / rightVal;
+    }
+
+    return 0;
+}
+
+int main() {
+    char postfix[100];
+    int i;
+
+    printf("Enter Postfix Expression: ");
+    scanf("%s", postfix);
+
+    for(i = 0; i < strlen(postfix); i++) {
+
+        if(isdigit(postfix[i])) {
+            push(createNode(postfix[i]));
+        }
+        else {
+            struct Node* right = pop();
+            struct Node* left = pop();
+
+            struct Node* newNode = createNode(postfix[i]);
+            newNode->left = left;
+            newNode->right = right;
+
+            push(newNode);
+        }
+    }
+
+    struct Node* root = pop();
+
+    printf("Result = %d\n", evaluate(root));
+
+    return 0;
+}
