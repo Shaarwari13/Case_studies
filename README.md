@@ -16,8 +16,8 @@ Features:
 - Delete Patient
 
 Sample Output:
-<img width="646" height="531" alt="image" src="https://github.com/user-attachments/assets/0feae296-6c30-4007-8547-bccfc115c10b" />
-<img width="646" height="531" alt="image" src="https://github.com/user-attachments/assets/0feae296-6c30-4007-8547-bccfc115c10b" />
+
+<img width="250" height="250" alt="image" src="https://github.com/user-attachments/assets/0feae296-6c30-4007-8547-bccfc115c10b" />
 
 
 ------------------------------------------------------------
