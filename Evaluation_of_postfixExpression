@@ -1,20 +1,17 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
-
 #define MAX 100
 
 int stack[MAX];
 int top = -1;
 
-// Push function
 void push(int value) {
     stack[++top] = value;
 }
 
-// Pop function
 int pop() {
-    return stack[top--];
+  return stack[top--];
 }
 
 int main() {
@@ -28,7 +25,7 @@ int main() {
 
         // If operand, push to stack
         if(isdigit(postfix[i])) {
-            push(postfix[i] - '0');   // convert char to int
+            push(postfix[i] - '0');   
         }
         else {
             operand2 = pop();
