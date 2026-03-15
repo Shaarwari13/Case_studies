@@ -9,7 +9,6 @@ struct Node {
     struct Node* right;
 };
 
-// Stack for tree nodes
 struct Node* stack[100];
 int top = -1;
 
@@ -21,7 +20,6 @@ struct Node* pop() {
     return stack[top--];
 }
 
-// Create new node
 struct Node* createNode(char data) {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     newNode->data = data;
@@ -29,13 +27,12 @@ struct Node* createNode(char data) {
     return newNode;
 }
 
-// Evaluate expression tree
+
 int evaluate(struct Node* root) {
     if(root == NULL)
         return 0;
 
-    // If leaf node (operand)
-    if(root->left == NULL && root->right == NULL)
+        if(root->left == NULL && root->right == NULL)
         return root->data - '0';
 
     int leftVal = evaluate(root->left);
