@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-
 #define MAX 100
 
 struct Call {
@@ -14,7 +13,6 @@ struct Call queue[MAX];
 int front = -1;
 int rear = -1;
 
-// Enqueue (Receive New Call)
 void enqueue() {
     if(rear == MAX - 1) {
         printf("Queue Overflow! No more calls can be added.\n");
@@ -38,7 +36,6 @@ void enqueue() {
     printf("Call added to waiting queue successfully!\n");
 }
 
-// Dequeue (Attend Call)
 void dequeue() {
     if(front == -1 || front > rear) {
         printf("Queue Underflow! No calls to attend.\n");
@@ -57,7 +54,6 @@ void dequeue() {
     }
 }
 
-// Display Waiting Calls
 void display() {
     if(front == -1) {
         printf("No calls in waiting queue.\n");
