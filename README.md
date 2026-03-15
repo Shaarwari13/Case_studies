@@ -88,4 +88,4 @@ Features:
 
 Sample Output:
 
-<img width="250" height="250" alt="image" src="https://github.com/Shaarwari13/Case_studies/blob/main/Screenshot%202026-03-15%20193340.png?raw=true" />
+<img width="250" height="250" alt="image" src="https://github.com/Shaarwari13/Case_studies/blob/main/Screenshot%202026-03-15%20192929.png?raw=true" />
