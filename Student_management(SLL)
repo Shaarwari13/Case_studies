@@ -11,7 +11,6 @@ struct Student {
 
 struct Student* head = NULL;
 
-// Insert Student
 void insert() {
     struct Student* newNode = (struct Student*)malloc(sizeof(struct Student));
 
@@ -38,7 +37,6 @@ void insert() {
     printf("Student inserted successfully!\n");
 }
 
-// Display Students
 void display() {
     if(head == NULL) {
         printf("No records found.\n");
@@ -54,7 +52,6 @@ void display() {
     }
 }
 
-// Search Student
 void search() {
     int roll;
     printf("Enter Roll Number to search: ");
@@ -76,7 +73,6 @@ void search() {
     printf("Student not found.\n");
 }
 
-// Delete Student
 void delete() {
     int roll;
     printf("Enter Roll Number to delete: ");
