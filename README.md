@@ -32,6 +32,7 @@ Features:
 
 Sample Output:
 
+<img width="250" height="250" alt="image" src="https://github.com/user-attachments/assets/0feae296-6c30-4007-8547-bccfc115c10b" />
 
 ------------------------------------------------------------
 
@@ -43,6 +44,8 @@ Features:
 - Uses LIFO principle
 
 Sample Output:
+
+<img width="250" height="250" alt="image" src="https://github.com/user-attachments/assets/0feae296-6c30-4007-8547-bccfc115c10b" />
 
 ------------------------------------------------------------
 
@@ -57,6 +60,8 @@ Features:
 
 Sample Output:
 
+<img width="250" height="250" alt="image" src="https://github.com/user-attachments/assets/0feae296-6c30-4007-8547-bccfc115c10b" />
+
 ------------------------------------------------------------
 
 5. Expression Tree Evaluation
@@ -67,6 +72,8 @@ Features:
 - Evaluate Expression using Recursion
 
 Sample Output:
+
+<img width="250" height="250" alt="image" src="https://github.com/user-attachments/assets/0feae296-6c30-4007-8547-bccfc115c10b" />
 
 ------------------------------------------------------------
 
@@ -80,3 +87,5 @@ Features:
 - Display Current Page
 
 Sample Output:
+
+<img width="250" height="250" alt="image" src="https://github.com/user-attachments/assets/0feae296-6c30-4007-8547-bccfc115c10b" />
