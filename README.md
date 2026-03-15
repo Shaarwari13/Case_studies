@@ -60,7 +60,7 @@ Features:
 
 Sample Output:
 
-<img width="250" height="250" alt="image" src="https://github.com/user-attachments/assets/0feae296-6c30-4007-8547-bccfc115c10b" />
+<img width="250" height="250" alt="image" src="https://github.com/Shaarwari13/Case_studies/blob/main/Screenshot%202026-03-15%20193340.png?raw=true" />
 
 ------------------------------------------------------------
 
